@@ -3,4 +3,5 @@
     <string name="title_activity_first_compose">FirstComposeActivity</string>
     <string name="icon_accessibility">Icon accessibility</string>
     <string name="profile_image">Profile Image</string>
+    <string name="title_activity_cart_compose">CartComposeActivity</string>
 </resources>

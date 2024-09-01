@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     var userLatLng: LatLng? = null
     var googleMap: GoogleMap? = null
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    val fusedLocationProviderClient: FusedLocationProviderClient by lazy {
+        LocationServices.getFusedLocationProviderClient(this)
+    }
     var marker: Marker? = null
     val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     fun getUserLocation() {
         val currentLocationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 8_000)
             .build()
+        // Create The variable first  then use it
         fusedLocationProviderClient.requestLocationUpdates(
             currentLocationRequest, locationCallback,
             Looper.getMainLooper()
@@ -97,7 +100,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         if (isGPSPermissionAllowed(Manifest.permission.ACCESS_COARSE_LOCATION) || isGPSPermissionAllowed(
                 Manifest.permission.ACCESS_FINE_LOCATION
             )

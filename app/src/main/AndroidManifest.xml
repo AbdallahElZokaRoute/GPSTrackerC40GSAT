@@ -16,6 +16,17 @@
         android:theme="@style/Theme.GPSTrackerC40GSat"
         tools:targetApi="31">
         <activity
+            android:name=".CartComposeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_cart_compose"
+            android:theme="@style/Theme.GPSTrackerC40GSat">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".FirstComposeActivity"
             android:exported="true"
             android:label="@string/title_activity_first_compose"
